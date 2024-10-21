@@ -1,0 +1,139 @@
+{
+  "allow_copy": 1, 
+  "allow_guest_to_view": 0, 
+  "allow_import": 0, 
+  "allow_rename": 0, 
+  "beta": 0, 
+  "creation": "2013-05-02 17:53:24", 
+  "custom": 0, 
+  "docstatus": 0,
+  "doctype": "DocType", 
+  "editable_grid": 0,  
+ "fields": [
+    {
+        "fieldname": "sync_data",
+        "fieldtype": "Section Break",
+        "label": ""
+    },
+    {
+      "fieldname": "sync_attributes",
+      "fieldtype": "Section Break",
+      "label": "Synchronize Attributes"
+  },
+    {
+      "allow_on_submit": 1,
+      "fieldname": "export_attributes",
+      "fieldtype": "Button",
+      "label": "Export Attributes"
+      },
+      {
+      "fieldname": "column_break2",
+      "fieldtype": "Column Break",
+      "label": ""
+      },
+      {
+      "allow_on_submit": 1,
+      "fieldname": "export_attribute_values",
+      "fieldtype": "Button",
+      "label": "Export Attribute Values"
+    },
+    {
+      "fieldname": "sync_categories",
+      "fieldtype": "Section Break",
+      "label": "Category"
+    },
+   {
+    "allow_on_submit": 1,
+    "fieldname": "export_categories",
+    "fieldtype": "Button",
+    "label": "Export Category"
+  },
+  {
+    "fieldname": "sync_attributes",
+    "fieldtype": "Section Break",
+    "label": "Products"
+  },
+  {
+    "allow_on_submit": 1,
+    "fieldname": "update_products",
+    "fieldtype": "Button",
+    "label": "Update Products"
+  },
+  {
+  "fieldname": "column_break3",
+  "fieldtype": "Column Break",
+  "label": ""
+  },
+  {
+  "allow_on_submit": 1,
+  "fieldname": "export_products",
+  "fieldtype": "Button",
+  "label": "Export Products"
+  }
+ ],
+ "has_web_view": 1, 
+ "hide_heading": 1, 
+ "hide_toolbar": 1, 
+ "icon": "fa fa-cog", 
+ "idx": 1, 
+ "image_view": 0, 
+ "in_create": 1, 
+ "is_submittable": 0, 
+ "issingle": 1, 
+ "istable": 0, 
+ "max_attachments": 0, 
+ "menu_index": 0, 
+ "module": "prestashoperpnextconnector",
+ "name": "Synchronization",
+ "owner": "Administrator",
+ "permissions": [
+  {
+    "amend": 0, 
+    "apply_user_permissions": 0, 
+    "cancel": 0, 
+    "create": 1, 
+    "delete": 0, 
+    "email": 0, 
+    "export": 0, 
+    "if_owner": 0, 
+    "import": 0, 
+    "permlevel": 0, 
+    "print": 0, 
+    "read": 1, 
+    "report": 0, 
+    "role": "System Manager", 
+    "set_user_permissions": 0, 
+    "share": 1, 
+    "submit": 0, 
+    "write": 0
+  },
+  {
+  "amend": 0, 
+   "apply_user_permissions": 0, 
+   "cancel": 0, 
+   "create": 0, 
+   "delete": 0, 
+   "email": 0, 
+   "export": 0, 
+   "if_owner": 0, 
+   "import": 0, 
+   "permlevel": 0, 
+   "print": 0, 
+   "read": 1, 
+   "report": 0, 
+   "role": "All", 
+   "set_user_permissions": 0, 
+   "share": 0, 
+   "submit": 0, 
+   "write": 0
+  }
+ ],
+ "quick_entry": 0, 
+ "read_only": 1, 
+ "read_only_onload": 0, 
+ "show_name_in_global_search": 0, 
+ "sort_order": "DESC",
+ "track_changes": 0,
+ "track_seen": 0,
+ "track_views": 0
+}

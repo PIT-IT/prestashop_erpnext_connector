@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include prestashop_erpnext_connector *.css
+recursive-include prestashop_erpnext_connector *.csv
+recursive-include prestashop_erpnext_connector *.html
+recursive-include prestashop_erpnext_connector *.ico
+recursive-include prestashop_erpnext_connector *.js
+recursive-include prestashop_erpnext_connector *.json
+recursive-include prestashop_erpnext_connector *.md
+recursive-include prestashop_erpnext_connector *.png
+recursive-include prestashop_erpnext_connector *.py
+recursive-include prestashop_erpnext_connector *.svg
+recursive-include prestashop_erpnext_connector *.txt
+recursive-exclude prestashop_erpnext_connector *.pyc
