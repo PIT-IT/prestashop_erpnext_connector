@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# Copyright(c) 2010-present, Webkul Software Pvt Ltd
+# For license information, please see license.txt
 
 from __future__ import unicode_literals
 import frappe
@@ -122,15 +124,3 @@ def quantity_update_to_prestashop(api_url, api_key,ecomm_id, ecomm_combination_i
 			up = prestashop.edit('stock_availables', stock_id, stock_data)
 		except Exception as e:
 			print("===========Error While Fetching Stock Available for stock id:%s, with error%s",(stock_id,str(e)))
-
-
-
-
-
-
-
-
-
-
-
-

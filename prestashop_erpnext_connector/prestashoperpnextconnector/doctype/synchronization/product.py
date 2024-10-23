@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# Copyright(c) 2010-present, Webkul Software Pvt Ltd
+# For license information, please see license.txt
 
 from __future__ import unicode_literals
 import frappe
@@ -10,6 +12,7 @@ from .category import addto_prestashop_merge
 from .category import sync_categories,_get_link_rewrite
 from erpnext.stock.utils import get_stock_balance
 from frappe.utils import flt, cstr, nowdate, nowtime
+import base64
 
 
 @frappe.whitelist()
@@ -118,6 +121,10 @@ def check_attributes(prestashop, ecomm_id, itemVariantObj, itemObj, combination_
 	for barcode in itemVariantObj.barcodes:
 			if barcode.barcode_type=='EAN':
 				combination_schema['combination']['ean13'] = barcode.barcode
+	if itemVariantObj.image:
+		image_id = create_images(prestashop, itemVariantObj.name, itemVariantObj.image, 'Item', ecomm_id)
+		if image_id:
+			combination_schema['combination']['associations']['images']['image']['id'] = str(image_id)
 	try:
 		prestashop_comb_id = prestashop.add('combinations',combination_schema)
 		status = True
@@ -191,6 +198,8 @@ def export_template(prestashop , template_data, product_schema):
 		try:
 			prestashop_product_id = prestashop.add('products', product_schema)
 			status = True
+			if template_data.image:
+				create_images(prestashop, template_data.name, template_data.image, 'Item', prestashop_product_id)
 		except Exception as e:
 			print("---exception raised while export template--- %r",product_schema)
 			error = str(e)
@@ -284,7 +293,7 @@ def update_template(prestashop , template_data, ecomm_id, ps_lang):
 				product_schema['product']['wholesale_price'] = str(round(float(template_data.last_purchase_rate),6))
 			if type(product_schema['product']['name']['language']) == list:
 				for i in range(len(product_schema['product']['name']['language'])):
-					if int(product_schema['product']['name']['language'][i])==int(ps_lang):
+					if int(product_schema['product']['name']['language'][i]['attrs']['id'])==int(ps_lang):
 						product_schema['product']['name']['language'][i]['value'] = template_data.item_name
 						product_schema['product']['description']['language'][i]['value'] = template_data.description
 			else:
@@ -307,7 +316,7 @@ def update_template(prestashop , template_data, ecomm_id, ps_lang):
 				error = str(e)
 			if 'image' not in product_schema['product']['associations']['images']:
 				if template_data.image:
-					get = create_images(prestashop, template_data.image, ecomm_id)
+					create_images(prestashop, template_data.name, template_data.image, 'Item', ecomm_id)
 	else:
 		status = True
 	return{
@@ -347,6 +356,12 @@ def update_attributes(prestashop, ecomm_id, ecomm_combination_id, itemVariantObj
 								'price':str(round(price_extra,6)),
 								'id_product':str(ecomm_id),
 								})
+		if itemVariantObj.image:
+				if 'image' not in combination_schema['combination']['associations']['images']:
+					image_id = create_images(prestashop, itemVariantObj.name, itemVariantObj.image, 'Item', ecomm_id)
+					combination_schema['combination']['associations'].pop('images',False)
+					if image_id:
+						combination_schema['combination']['associations']['images']={'image':{'id':str(image_id)}}
 		for barcode in itemVariantObj.barcodes:
 			if barcode.barcode_type=='EAN':
 				combination_schema['combination']['ean13'] = barcode.barcode
@@ -382,12 +397,19 @@ def update_quantity_prestashop(prestashop, ecomm_id,ecomm_combination_id, quanti
 		return [1, '']
 	return [0, ' Error in Updating Quantity,Not able to get stock.']
 
-def create_images(prestashop, image_data, resource_id, image_name=None, 			 resource='images/products'):
-	# if image_name == None:
-	# 	image_name = 'op' + str(resource_id) + '.png'
-	# try:
-	# 	returnid = prestashop.add(str(resource) + '/' + str(resource_id), image_data, image_name)
-	# 	return returnid
-	# except Exception as e:
-	# 	return False
-	pass
+def create_images(prestashop, name, image_path, object_name, resource_id, image_name=None, resource='images/products'):
+	if image_name == None:
+		image_name = 'op' + str(resource_id) + '.png'
+	try:
+		file_doc = frappe.get_doc("File",{
+				"file_url": image_path,
+				"attached_to_doctype": object_name,
+				"attached_to_name": name
+		})
+		if file_doc:
+			image_data = base64.b64encode(file_doc.get_content())
+			returnid = prestashop.add(str(resource) + '/' + str(resource_id), image_data, image_name)
+			return returnid
+	except Exception as e:
+		print("=========error while creating images=============",str(e))
+		return False

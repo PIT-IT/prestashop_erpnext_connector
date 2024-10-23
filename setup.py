@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+# Copyright(c) 2010-present, Webkul Software Pvt Ltd
+# For license information, please see license.txt
+
 from setuptools import setup, find_packages
 
 with open('requirements.txt') as f:
@@ -11,8 +14,8 @@ setup(
 	name='prestashop_erpnext_connector',
 	version=version,
 	description='App To Synchronize Data From Erpnext To Prestashop',
-	author='webkul',
-	author_email='demo@webkul.com',
+	author='Webkul Software PVT. LTD.',
+	author_email='sales@webkul.com',
 	packages=find_packages(),
 	zip_safe=False,
 	include_package_data=True,

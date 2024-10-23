@@ -1,79 +1,18 @@
 # -*- coding: utf-8 -*-
+# Copyright(c) 2010-present, Webkul Software Pvt Ltd
+# For license information, please see license.txt
+
 from __future__ import unicode_literals
 from . import __version__ as app_version
 
 app_name = "presatshop_erpnext_connector"
 app_title = "Prestashop Erpnext Connector"
-app_publisher = "Webkul"
-app_description = "App for webkul modules"
+app_publisher = "Webkul Software Pvt. Ltd."
+app_description = "App to export data from Erpnext to Prestashop"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
-app_email = "test@webkul.com"
-app_license = "MIT"
-
-# Includes in <head>
-# ------------------
-
-# include js, css files in header of desk.html
-# app_include_css = "/assets/prestashop_erpnext_connector/css/prestashop_erpnext_connector.css"
-# app_include_js = "/assets/prestashop_erpnext_connector/js/prestashop_erpnext_connector.js"
-
-# include js, css files in header of web template
-# web_include_css = "/assets/prestashop_erpnext_connector/css/prestashop_erpnext_connector.css"
-# web_include_js = "/assets/prestashop_erpnext_connector/js/prestashop_erpnext_connector.js"
-
-# include js in page
-# page_js = {"page" : "public/js/file.js"}
-
-# include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
-# doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
-# doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
-
-# Home Pages
-# ----------
-
-# application home page (will override Website Settings)
-# home_page = "login"
-
-# website user home page (by Role)
-# role_home_page = {
-#	"Role": "home_page"
-# }
-
-# Website user home page (by function)
-# get_website_user_home_page = "prestashop_erpnext_connector.utils.get_home_page"
-
-# Generators
-# ----------
-
-# automatically create page for each record of this doctype
-# website_generators = ["Web Page"]
-
-# Installation
-# ------------
-
-# before_install = "prestashop_erpnext_connector.install.before_install"
-# after_install = "prestashop_erpnext_connector.install.after_install"
-
-# Desk Notifications
-# ------------------
-# See frappe.core.notifications.get_notification_config
-
-# notification_config = "prestashop_erpnext_connector.notifications.get_notification_config"
-
-# Permissions
-# -----------
-# Permissions evaluated in scripted ways
-
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
-#
-# has_permission = {
-# 	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
+app_email = "sales@webkul.com"
+app_license = "See license.txt"
 
 # Document Events
 # ---------------

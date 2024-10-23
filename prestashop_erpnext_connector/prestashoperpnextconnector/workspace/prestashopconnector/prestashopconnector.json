@@ -1,0 +1,118 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"Mndn8pWjOY\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">PrestaShop Erpnext Connector</span>\",\"col\":12}},{\"id\":\"9DlpWWm2CV\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"3hwL4NGGFj\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Connector Instance\",\"col\":3}},{\"id\":\"r77tPl_Oqv\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Data Synchronization\",\"col\":3}},{\"id\":\"YuuCSvBD0k\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"7iypYOVldL\",\"type\":\"card\",\"data\":{\"card_name\":\"Mappings\",\"col\":4}}]",
+ "creation": "2023-02-15 16:39:46.407625",
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "expand",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "PrestaShopConnector",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mappings",
+   "link_count": 7,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Category",
+   "link_count": 0,
+   "link_to": "CategoryMapping",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product",
+   "link_count": 0,
+   "link_to": "ProductMapping",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product Variant",
+   "link_count": 0,
+   "link_to": "ProductVariantMapping",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Attribute",
+   "link_count": 0,
+   "link_to": "AttributeMapping",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Attribute Value",
+   "link_count": 0,
+   "link_to": "AttributeValueMapping",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Customer",
+   "link_count": 0,
+   "link_to": "CustomerMapping",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sale Order",
+   "link_count": 0,
+   "link_to": "OrderMapping",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "module": "PrestashopErpnextConnector",
+ "name": "PrestaShopConnector",
+ "number_cards": [],
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 2,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "Data Synchronization",
+   "link_to": "Synchronization",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Connector Instance",
+   "link_to": "Instance",
+   "type": "DocType"
+  }
+ ],
+ "title": "PrestaShopConnector"
+}

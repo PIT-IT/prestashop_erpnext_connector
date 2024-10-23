@@ -71,7 +71,7 @@
   "label": "Export Products"
   }
  ],
- "has_web_view": 1, 
+ "has_web_view": 0, 
  "hide_heading": 1, 
  "hide_toolbar": 1, 
  "icon": "fa fa-cog", 
@@ -105,7 +105,7 @@
     "set_user_permissions": 0, 
     "share": 1, 
     "submit": 0, 
-    "write": 0
+    "write": 1
   },
   {
   "amend": 0, 

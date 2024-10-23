@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# Copyright(c) 2010-present, Webkul Software Pvt Ltd
+# For license information, please see license.txt
 
 from __future__ import unicode_literals
 import frappe
@@ -8,7 +10,7 @@ from erpnext.selling.doctype.sales_order.sales_order import make_sales_invoice, 
 from erpnext.accounts.doctype.payment_request.payment_request import make_payment_request, make_payment_entry
 from frappe import _
 import json
-
+from frappe.utils.file_manager import save_file
 
 @frappe.whitelist()
 def create_pricelist():
@@ -80,7 +82,10 @@ def create_product():
 				'status':True
 			})
 		else:
+			image = vals.pop('image',False)
 			product = frappe.new_doc("Item").update(vals).insert()
+			if image:
+				create_image(product.name,image)
 			return_vals.update({
 			'name':product.name,
 			'status':True
@@ -106,7 +111,10 @@ def update_product():
 			for check_barcode in product.barcodes:
 				if check_barcode.name==vals['barcodes'][0]['barcode']:
 					vals.pop('barcodes')
+		image = vals.pop('image',False)
 		product.update(vals).save()
+		if image:
+			create_image(product.name,image)
 		return_vals.update({
 		'name':product.name,
 		'status':True
@@ -117,6 +125,30 @@ def update_product():
 		raise
 	finally:
 		update_active_status_instance(instance)
+
+
+def create_image(item,image):
+	try:
+		item_obj = frappe.get_doc('Item',item)
+		if item_obj.image:
+			file_doc = frappe.get_doc("File", {
+				"file_url": item_obj.image,
+				"attached_to_doctype": "Item",
+				"attached_to_name": item
+			})
+			file_doc.delete()
+		file_save = save_file(item_obj.item_name+'.png', image, "Item",
+					item, folder=None, decode=True, is_private=0, df=True)
+		if file_save:
+			item_vals = {
+			'image':file_save.file_url,
+			'website_image':file_save.file_url
+			}
+			item_obj.update(item_vals).save()
+		return True
+	except Exception as e:
+		print("============ issue creating image ======= %r",str(e))
+	
 
 @frappe.whitelist()
 def create_attribute():
@@ -435,7 +467,6 @@ def create_order():
 			coupon_product = instance[0][2]
 			shipping_product = instance[0][3]
 			vals = get_default_fields(vals, warehouse, shipping_product, coupon_product)
-			print("=======vals of order %r==========",vals)
 			order = frappe.new_doc("Sales Order").update(vals).insert()
 			if order:
 				frappe.new_doc("OrderMapping").update({'title':order.name,'erpnext_id':order.name,'ecomm_id': ecommerce_order_id,'created_by':'prestashop'}).insert()
