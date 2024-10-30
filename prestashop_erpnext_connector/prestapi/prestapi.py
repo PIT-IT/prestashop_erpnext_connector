@@ -314,7 +314,7 @@ class PrestaShopWebService(object):
 			r = self._execute(url, 'POST', data= content, add_headers=headers)
 		else:
 			# img_binary = content
-			img_binary = base64.decodestring(content)
+			img_binary = base64.decodebytes(content)
 			# img_file = StringIO(img_binary)
 			img_file = img_binary
 			r = self._execute(url, 'POST', files={'image': (img_filename, img_file)})
