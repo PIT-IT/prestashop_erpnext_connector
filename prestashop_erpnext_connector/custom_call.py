@@ -203,6 +203,7 @@ def create_attribute_value():
 def create_category():
 	try:
 		vals = json.loads(frappe.request.data)
+		vals['item_group_name'] = _unescape(vals['item_group_name'])
 		return_vals = {'status':False}
 		check_category = frappe.db.sql("""
 				select `name` from `tabItem Group` where  UPPER(item_group_name)="%s" limit 1"""%vals['item_group_name'])
@@ -222,6 +223,15 @@ def create_category():
 	except Exception as e:
 		print("=========issue while creating category=========%r",str(e))
 		raise
+
+def _unescape(text):
+	try:
+		from urllib.parse import unquote_plus
+		text = unquote_plus(text)
+		return text
+	except Exception as e:
+		print("=========issue while category name escape =========%r",str(e))
+		return text
 
 @frappe.whitelist()
 def create_payment():
